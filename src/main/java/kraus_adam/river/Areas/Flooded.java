@@ -1,4 +1,4 @@
 package kraus_adam.river.Areas;
 
-public class Flooded {
+public class Flooded extends LandArea {
 }
