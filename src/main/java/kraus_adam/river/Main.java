@@ -11,15 +11,15 @@ public class Main extends Application {
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
 
+    private Layout layout;
+
     @Override
     public void start(Stage stage) throws IOException {
-        Group root = new Group();
-        Scene scene = new Scene(root, WIDTH, HEIGHT);
+        layout = new Layout();
+        Scene scene = new Scene(layout.makeContents(), WIDTH, HEIGHT);
         stage.setTitle("River Simulator");
         stage.setScene(scene);
         stage.show();
-
-        Layout.makeContents(root);
     }
 
     public static void main(String[] args) {
