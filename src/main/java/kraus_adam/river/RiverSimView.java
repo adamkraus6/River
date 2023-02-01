@@ -6,8 +6,16 @@ public class RiverSimView extends GridPane {
     private RiverSim model;
     private int rows, cols;
     public RiverSimView() {
-        rows = 3;
-        cols = 5;
+
+    }
+
+    public void setModel(RiverSim model) {
+        this.model = model;
+    }
+
+    public void makeContents() {
+        rows = model.getRows();
+        cols = model.getCols();
 
         for(int i = 0; i < rows; i++) {
             for(int j = 0; j < cols; j++) {
@@ -29,15 +37,13 @@ public class RiverSimView extends GridPane {
         }
 
         ColumnConstraints CC;
+        double tileWidth = 100.0/((double)cols-0.5);
+        double riverWidth = 100.0-(tileWidth*(cols-1.0));
         for(int j = 0; j < cols; j++) {
             CC = new ColumnConstraints();
-            int percent = j == cols/2 ? 12 : 22;
+            double percent = j == cols/2 ? riverWidth : tileWidth;
             CC.setPercentWidth(percent);
             getColumnConstraints().add(CC);
         }
-    }
-
-    public void setModel(RiverSim model) {
-        this.model = model;
     }
 }

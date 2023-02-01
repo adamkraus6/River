@@ -11,12 +11,12 @@ public class Main extends Application {
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
 
-    private Layout layout;
-
     @Override
     public void start(Stage stage) throws IOException {
-        layout = new Layout();
-        Scene scene = new Scene(layout.makeContents(), WIDTH, HEIGHT);
+        RiverSim model = new RiverSim(5, 3);
+        Controller controller = new Controller(model);
+        Layout view = new Layout(controller, model);
+        Scene scene = new Scene(view.makeContents(), WIDTH, HEIGHT);
         stage.setTitle("River Simulator");
         stage.setScene(scene);
         stage.show();
