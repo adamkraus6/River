@@ -5,6 +5,11 @@ public class LandArea {
     protected int totalRevenue;
     protected int lastChanged; // type unknown?
     protected int age; // type unknown?
+
+    public String getName() {
+        return name;
+    }
+
     protected String name;
 
     public void nextMonth() {
