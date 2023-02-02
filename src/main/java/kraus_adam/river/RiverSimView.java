@@ -18,6 +18,7 @@ public class RiverSimView extends GridPane {
             for(int j = 0; j < cols; j++) {
                 if(j != cols/2) {
                     TileView TV = new TileView();
+                    TV.setModel(model.getTile(j, i));
                     model.addObserver(j, i, TV);
                     TV.setPrefSize(1000, 1000);
                     add(TV, j, i);

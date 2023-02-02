@@ -85,7 +85,7 @@ public class Layout {
         // info bar, lower
         VBox infoBar = new VBox();
         infoBar.setAlignment(Pos.CENTER);
-        infoBarText = new Label("Year: 0 Month: 1\nFilled: 0\nFunds: $0k");
+        infoBarText = new Label();
         infoBarText.setMinHeight(65);
         infoBarText.setPadding(new Insets(5));
         infoBar.getChildren().add(infoBarText);

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 
 public class Controller {
     private Layout layout;
@@ -12,30 +13,36 @@ public class Controller {
         this.model = model;
         this.layout = layout;
 
-        layout.nextMonth.addEventHandler(ActionEvent.ACTION, new nextMonthFilter());
+        layout.nextMonth.addEventHandler(ActionEvent.ACTION, new nextMonthHandler());
         for (Button button : layout.resizeButtons) {
-            button.addEventHandler(ActionEvent.ACTION, new resizeSim());
+            button.addEventHandler(ActionEvent.ACTION, new resizeSimHandler());
         }
         attachSimViewButtonHandlers();
+        setInfoBar();
     }
 
-    private class nextMonthFilter implements EventHandler<ActionEvent> {
-        @Override
-        public void handle(ActionEvent event) {
-            System.out.println("NEXT MONTH");
-            model.nextMonth();
-        }
+    public void setInfoBar() {
+        layout.infoBarText.setText("Year: " + model.getYear() + " Month: " + model.getMonth() +
+                "\nFilled: " + model.getFilled() + "\nFunds: $" + model.getFunds() + "k");
     }
 
     private void attachSimViewButtonHandlers() {
         for (Node child : layout.simView.getChildren()) {
             if(child instanceof Button) {
-                child.addEventHandler(ActionEvent.ACTION, new changeLandArea());
+                child.addEventHandler(ActionEvent.ACTION, new changeLandAreaHandler());
             }
         }
     }
 
-    private class resizeSim implements  EventHandler<ActionEvent> {
+    private class nextMonthHandler implements EventHandler<ActionEvent> {
+        @Override
+        public void handle(ActionEvent event) {
+            model.nextMonth();
+            setInfoBar();
+        }
+    }
+
+    private class resizeSimHandler implements  EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
             Button source = (Button)event.getSource();
@@ -51,19 +58,23 @@ public class Controller {
                     break;
             }
             attachSimViewButtonHandlers();
+            setInfoBar();
         }
     }
 
-    private class changeLandArea implements EventHandler<ActionEvent> {
+    private class changeLandAreaHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-            Button source = (Button)event.getSource();
+            TileView source = (TileView)event.getSource();
             int row = layout.simView.getRowIndex(source);
             int col = layout.simView.getColumnIndex(source);
-            System.out.println(col + " " + row);
-            // if add checkbox selected
-            // get which radio button
-            // model.setTile(col, row, new Whatever());
+            if(layout.add.isSelected()) {
+                String selected = ((RadioButton)layout.landAreas.getSelectedToggle()).getText();
+                model.setTile(col, row, selected);
+                setInfoBar();
+            } else {
+
+            }
         }
     }
 }
