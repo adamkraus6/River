@@ -14,9 +14,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         RiverSim model = new RiverSim(5, 3);
-        Controller controller = new Controller(model);
-        Layout view = new Layout(controller, model);
-        Scene scene = new Scene(view.makeContents(), WIDTH, HEIGHT);
+        Layout view = new Layout(model);
+        Controller controller = new Controller(model, view);
+        Scene scene = new Scene(view.root, WIDTH, HEIGHT);
         stage.setTitle("River Simulator");
         stage.setScene(scene);
         stage.show();

@@ -1,6 +1,5 @@
 package kraus_adam.river;
 
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.text.TextAlignment;
 
@@ -13,6 +12,8 @@ public class TileView extends Button implements PropertyChangeListener {
         setTextAlignment(TextAlignment.CENTER);
         setText("-U-\n-$0k\n+$0k");
     }
+
+    // GRADING: OBSERVE
     @Override
     public void propertyChange(PropertyChangeEvent event) {
 

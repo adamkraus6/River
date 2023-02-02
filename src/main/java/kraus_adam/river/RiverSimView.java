@@ -5,9 +5,6 @@ import javafx.scene.layout.*;
 public class RiverSimView extends GridPane {
     private RiverSim model;
     private int rows, cols;
-    public RiverSimView() {
-
-    }
 
     public void setModel(RiverSim model) {
         this.model = model;
@@ -21,6 +18,7 @@ public class RiverSimView extends GridPane {
             for(int j = 0; j < cols; j++) {
                 if(j != cols/2) {
                     TileView TV = new TileView();
+                    model.addObserver(j, i, TV);
                     TV.setPrefSize(1000, 1000);
                     add(TV, j, i);
                 }
@@ -45,5 +43,16 @@ public class RiverSimView extends GridPane {
             CC.setPercentWidth(percent);
             getColumnConstraints().add(CC);
         }
+    }
+
+    public void resize(int cols, int rows) {
+        // create new model
+        model.resize(cols, rows);
+        // clear gridpane
+        getChildren().clear();
+        getRowConstraints().clear();
+        getColumnConstraints().clear();
+        // assemble new gridpane
+        makeContents();
     }
 }
