@@ -16,17 +16,24 @@ public class TileView extends Button implements PropertyChangeListener {
 
     public void setModel(Tile tile) {
         this.tile = tile;
-        pullTile();
+        getTile();
     }
 
-    private void pullTile() {
+    private void getTile() {
         String name = tile.getName();
-        setText("-" + name.charAt(0) + "-\n-$0k\n+$0k");
+        String monthly = tile.getMonthlyChange();
+        setText("-" + name.charAt(0) + "-\n" + monthly);
+        setStyle("-fx-background-color: " + tile.getColor());
+    }
+
+    public String getTileDetails() {
+        String name = tile.getDetails();
+        return name;
     }
 
     // GRADING: OBSERVE
     @Override
     public void propertyChange(PropertyChangeEvent event) {
-        pullTile();
+        getTile();
     }
 }

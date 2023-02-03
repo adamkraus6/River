@@ -3,11 +3,19 @@ package kraus_adam.river;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.Mnemonic;
 import javafx.scene.layout.*;
+
+import java.util.ArrayList;
 
 public class Layout {
     private RiverSim model;
     public VBox root;
+    public MenuBar menuBar;
+    public MenuItem[] resizeItems;
     public Button nextMonth;
     public RiverSimView simView;
     public Button[] resizeButtons;
@@ -15,15 +23,30 @@ public class Layout {
     public CheckBox add;
     public Label landInfoText;
     public Label infoBarText;
+    public ArrayList<Mnemonic> hotkeys;
 
     public Layout(RiverSim model) {
         this.model = model;
+        hotkeys = new ArrayList<Mnemonic>();
         makeContents();
     }
 
     public void makeContents() {
         root = new VBox();
         root.setAlignment(Pos.BOTTOM_CENTER);
+
+        menuBar = new MenuBar();
+
+        Menu resizeMenu = new Menu("Resize");
+
+        resizeItems = new MenuItem[3];
+        resizeItems[0] = new MenuItem("5X3");
+        resizeItems[1] = new MenuItem("7X5");
+        resizeItems[2] = new MenuItem("9X7");
+
+        resizeMenu.getItems().addAll(resizeItems[0], resizeItems[1], resizeItems[2]);
+
+        menuBar.getMenus().add(resizeMenu);
 
         HBox upper = new HBox();
         upper.setAlignment(Pos.CENTER);
@@ -50,6 +73,8 @@ public class Layout {
         actionCommands.setAlignment(Pos.TOP_CENTER);
         VBox.setVgrow(actionCommands, Priority.ALWAYS);
         nextMonth = new Button("Next Month");
+        KeyCombination kc1 = new KeyCodeCombination(KeyCode.N, KeyCombination.ALT_DOWN);
+        hotkeys.add(new Mnemonic(nextMonth, kc1));
         Region spacer1 = new Region();
         VBox.setVgrow(spacer1, Priority.ALWAYS);
         landAreas = new ToggleGroup();
@@ -72,8 +97,14 @@ public class Layout {
         HBox.setHgrow(spacer4, Priority.ALWAYS);
         resizeButtons = new Button[3];
         resizeButtons[0] = new Button("5X3");
+        KeyCombination kc2 = new KeyCodeCombination(KeyCode.DIGIT5, KeyCombination.ALT_DOWN);
+        hotkeys.add(new Mnemonic(resizeButtons[0], kc2));
         resizeButtons[1] = new Button("7X5");
+        KeyCombination kc3 = new KeyCodeCombination(KeyCode.DIGIT7, KeyCombination.ALT_DOWN);
+        hotkeys.add(new Mnemonic(resizeButtons[1], kc3));
         resizeButtons[2] = new Button("9X7");
+        KeyCombination kc4 = new KeyCodeCombination(KeyCode.DIGIT9, KeyCombination.ALT_DOWN);
+        hotkeys.add(new Mnemonic(resizeButtons[2], kc4));
         resizing.getChildren().addAll(resize, spacer4, resizeButtons[0], resizeButtons[1], resizeButtons[2]);
         resizing.setPadding(new Insets(2));
         actionCommands.getChildren().addAll(nextMonth, spacer1, ag, rec, un, spacer2, add, spacer3, resizing);
@@ -89,6 +120,6 @@ public class Layout {
         infoBarText.setMinHeight(65);
         infoBarText.setPadding(new Insets(5));
         infoBar.getChildren().add(infoBarText);
-        root.getChildren().addAll(upper, infoBar);
+        root.getChildren().addAll(menuBar, upper, infoBar);
     }
 }

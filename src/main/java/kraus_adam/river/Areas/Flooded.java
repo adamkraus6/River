@@ -6,4 +6,9 @@ public class Flooded extends LandArea {
         totalCost = 0;
         totalRevenue = 0;
     }
+
+    @Override
+    public String getColor() {
+        return "LIGHTBLUE";
+    }
 }

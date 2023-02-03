@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 
 public class Controller {
@@ -17,12 +18,18 @@ public class Controller {
         for (Button button : layout.resizeButtons) {
             button.addEventHandler(ActionEvent.ACTION, new resizeSimHandler());
         }
+        for (MenuItem resizeItem : layout.resizeItems) {
+            resizeItem.addEventHandler(ActionEvent.ACTION, new resizeSimHandler());
+        }
         attachSimViewButtonHandlers();
         setInfoBar();
     }
 
     public void setInfoBar() {
-        layout.infoBarText.setText("Year: " + model.getYear() + " Month: " + model.getMonth() +
+        int time = model.getTime();
+        int month = (time % 12) + 1;
+        int year = time / 12;
+        layout.infoBarText.setText("Year: " + year + " Month: " + month +
                 "\nFilled: " + model.getFilled() + "\nFunds: $" + model.getFunds() + "k");
     }
 
@@ -45,8 +52,16 @@ public class Controller {
     private class resizeSimHandler implements  EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
-            Button source = (Button)event.getSource();
-            switch (source.getText()) {
+            Object source = event.getSource();
+            String newSize = "";
+            if(source instanceof Button) {
+                Button buttonSrc = (Button)event.getSource();
+                newSize = buttonSrc.getText();
+            } else if(source instanceof MenuItem) {
+                MenuItem menuSrc = (MenuItem)event.getSource();
+                newSize = menuSrc.getText();
+            }
+            switch (newSize) {
                 case "5X3":
                     layout.simView.resize(5, 3);
                     break;
@@ -73,7 +88,8 @@ public class Controller {
                 model.setTile(col, row, selected);
                 setInfoBar();
             } else {
-
+                String landInfo = source.getTileDetails();
+                layout.landInfoText.setText(landInfo);
             }
         }
     }
