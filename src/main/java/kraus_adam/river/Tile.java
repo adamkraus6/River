@@ -41,6 +41,7 @@ public class Tile {
      */
     public int nextMonth() {
         int money = area.nextMonth();
+        // GRADING: TRIGGER
         subject.firePropertyChange("nextMonth", null, null);
         return money;
     }

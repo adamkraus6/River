@@ -4,7 +4,6 @@ import javafx.scene.layout.*;
 
 public class RiverSimView extends GridPane {
     private RiverSim model;
-    private int rows, cols;
 
     /** 
      * Sets the model for this view
@@ -18,8 +17,8 @@ public class RiverSimView extends GridPane {
      * Makes the contents of the RiverSim grid
      */
     public void makeContents() {
-        rows = model.getRows();
-        cols = model.getCols();
+        int rows = model.getRows();
+        int cols = model.getCols();
 
         for(int i = 0; i < rows; i++) {
             for(int j = 0; j < cols; j++) {
