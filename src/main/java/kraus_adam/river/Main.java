@@ -39,7 +39,7 @@
  * Extension 2: 3b 15 points Menu Bar: A menu bar is now at the top of the page,
  *      and has a resizing menu, with the same resizing options as in the action commands area.
  * Extension 3: 2d 10 points Land Area Colors: The color of Agriculture land areas is green,
- *      Recreation is red, Flooded is blue, and Unused is grey.
+ *      Recreation is red, Flooded is light blue, and Unused is grey.
  *
  *
  * The grade you compute is the starting point for course staff, who reserve the right to change the grade if they disagree with your assessment and to deduct points for other issues they may encounter, such as errors in the submission process, naming issues, etc.
