@@ -34,8 +34,11 @@
  *
  *
  * Final Tier: Extensions 30
- * Extension 1: 3a 10 points Hotkeys: You can press the Next Month by pressing the keys ALT+N,
- *      the 5X3 resizing with ALT+5, 7X5 with ALT+7, and 9X7 with ALT+9.
+ * Extension 1: 3a 10 points Hotkeys: You can press the following buttons with these hotkeys:
+ *      Next Month with ALT+N
+ *      5X3 resizing with ALT+5
+ *      7X5 resizing with ALT+7
+ *      9X7 resizing with ALT+9
  * Extension 2: 3b 15 points Menu Bar: A menu bar is now at the top of the page,
  *      and has a resizing menu, with the same resizing options as in the action commands area.
  * Extension 3: 2d 10 points Land Area Colors: The color of Agriculture land areas is green,
