@@ -58,6 +58,11 @@ public class Main extends Application {
     public static final int WIDTH = 600;
     public static final int HEIGHT = 400;
 
+    
+    /** 
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         RiverSim model = new RiverSim(5, 3);
@@ -72,6 +77,10 @@ public class Main extends Application {
         stage.show();
     }
 
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         launch();
     }

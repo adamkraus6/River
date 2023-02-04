@@ -10,6 +10,11 @@ import javafx.scene.control.RadioButton;
 public class Controller {
     private Layout layout;
     private RiverSim model;
+    /**
+     * Controller constructor
+     * @param model RiverSim model
+     * @param layout GUI layout
+     */
     public Controller(RiverSim model, Layout layout) {
         this.model = model;
         this.layout = layout;
@@ -25,6 +30,9 @@ public class Controller {
         setInfoBar();
     }
 
+    /**
+     * Sets the info bar at the bottom of the screen to current information
+     */
     public void setInfoBar() {
         int time = model.getTime();
         int month = (time % 12) + 1;
@@ -33,14 +41,20 @@ public class Controller {
                 "\nFilled: " + model.getFilled() + "\nFunds: $" + model.getFunds() + "k");
     }
 
+    /**
+     * Attaches a land area event handler to every TileView button in RiverSimView
+     */
     private void attachSimViewButtonHandlers() {
         for (Node child : layout.simView.getChildren()) {
             if(child instanceof Button) {
-                child.addEventHandler(ActionEvent.ACTION, new changeLandAreaHandler());
+                child.addEventHandler(ActionEvent.ACTION, new landAreaHandler());
             }
         }
     }
 
+    /**
+     * Event handler for advancing to the next month
+     */
     private class nextMonthHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
@@ -49,6 +63,9 @@ public class Controller {
         }
     }
 
+    /**
+     * Event handler for resizing the river sim model
+     */
     private class resizeSimHandler implements  EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
@@ -77,7 +94,10 @@ public class Controller {
         }
     }
 
-    private class changeLandAreaHandler implements EventHandler<ActionEvent> {
+    /**
+     * Event handler for clicking on a land area button
+     */
+    private class landAreaHandler implements EventHandler<ActionEvent> {
         @Override
         public void handle(ActionEvent event) {
             TileView source = (TileView)event.getSource();

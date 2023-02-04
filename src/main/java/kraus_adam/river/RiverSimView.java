@@ -6,10 +6,17 @@ public class RiverSimView extends GridPane {
     private RiverSim model;
     private int rows, cols;
 
+    /** 
+     * Sets the model for this view
+     * @param model RiverSim model
+     */
     public void setModel(RiverSim model) {
         this.model = model;
     }
 
+    /**
+     * Makes the contents of the RiverSim grid
+     */
     public void makeContents() {
         rows = model.getRows();
         cols = model.getCols();
@@ -46,6 +53,12 @@ public class RiverSimView extends GridPane {
         }
     }
 
+    
+    /** 
+     * Resizes the model and gridpane
+     * @param cols New columns
+     * @param rows New rows
+     */
     public void resize(int cols, int rows) {
         // create new model
         model.resize(cols, rows);

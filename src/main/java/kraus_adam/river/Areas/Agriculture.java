@@ -1,6 +1,10 @@
 package kraus_adam.river.Areas;
 
 public class Agriculture extends LandArea {
+    /**
+     * Agriculture land area constructor
+     * @param created Time of creation
+     */
     public Agriculture(int created) {
         name = "Agriculture";
         totalCost = 300;
@@ -9,6 +13,11 @@ public class Agriculture extends LandArea {
         lastChanged = created;
     }
 
+    
+    /** 
+     * Calculates the change in cost/revenue for a new month
+     * @return int cost/revenue change
+     */
     @Override
     public int nextMonth() {
         age++;
@@ -24,6 +33,11 @@ public class Agriculture extends LandArea {
         return change;
     }
 
+    
+    /** 
+     * Gets the monthly money change for cost/revenue
+     * @return String Monthly money change
+     */
     @Override
     public String getMonthlyChange() {
         int time = age + lastChanged;
@@ -39,6 +53,11 @@ public class Agriculture extends LandArea {
         return "-$" + minus + "k\n+$" + plus + "k";
     }
 
+    
+    /** 
+     * Gets the detailed land area information
+     * @return String Detailed information
+     */
     @Override
     public String getDetails() {
         int changedYear = lastChanged / 12;
@@ -51,6 +70,11 @@ public class Agriculture extends LandArea {
         return details;
     }
 
+    
+    /** 
+     * Gets the color chosen for the Agriculture land area
+     * @return String
+     */
     @Override
     public String getColor() {
         return "LIGHTGREEN";

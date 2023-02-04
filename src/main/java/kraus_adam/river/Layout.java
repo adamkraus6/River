@@ -25,12 +25,19 @@ public class Layout {
     public Label infoBarText;
     public ArrayList<Mnemonic> hotkeys;
 
+    /**
+     * GUI Layout constructor
+     * @param model RiverSim model
+     */
     public Layout(RiverSim model) {
         this.model = model;
         hotkeys = new ArrayList<Mnemonic>();
         makeContents();
     }
 
+    /**
+     * Makes the layout contents for the sim
+     */
     public void makeContents() {
         root = new VBox();
         root.setAlignment(Pos.BOTTOM_CENTER);
@@ -38,12 +45,10 @@ public class Layout {
         menuBar = new MenuBar();
 
         Menu resizeMenu = new Menu("Resize");
-
         resizeItems = new MenuItem[3];
         resizeItems[0] = new MenuItem("5X3");
         resizeItems[1] = new MenuItem("7X5");
         resizeItems[2] = new MenuItem("9X7");
-
         resizeMenu.getItems().addAll(resizeItems[0], resizeItems[1], resizeItems[2]);
 
         menuBar.getMenus().add(resizeMenu);

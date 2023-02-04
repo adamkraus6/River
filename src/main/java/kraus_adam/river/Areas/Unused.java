@@ -1,6 +1,10 @@
 package kraus_adam.river.Areas;
 
 public class Unused extends LandArea {
+    /**
+     * Unused land area constructor
+     * @param created Time of creation
+     */
     public Unused(int created) {
         name = "Unused";
         totalCost = 0;
@@ -9,6 +13,11 @@ public class Unused extends LandArea {
         lastChanged = created;
     }
 
+    
+    /** 
+     * Gets the detailed land area information
+     * @return String Detailed information
+     */
     @Override
     public String getDetails() {
         int changedYear = lastChanged / 12;

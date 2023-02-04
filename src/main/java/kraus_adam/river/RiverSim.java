@@ -8,10 +8,18 @@ public class RiverSim {
     private int timeSinceReset;
     private int funds;
     private int filled;
+    
+    /** 
+     * @return int
+     */
     public int getCols() {
         return cols;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int getRows() {
         return rows;
     }
@@ -21,6 +29,11 @@ public class RiverSim {
 
     private Tile[][] sim;
 
+    /**
+     * RiverSim model constructor
+     * @param cols Columns in model
+     * @param rows Rows in model
+     */
     public RiverSim(int cols, int rows) {
         this.cols = cols;
         this.rows = rows;
@@ -31,6 +44,9 @@ public class RiverSim {
         genSim();
     }
 
+    /**
+     * Creates new tiles for the sim
+     */
     private void genSim() {
         sim = new Tile[rows][cols];
 
@@ -43,6 +59,12 @@ public class RiverSim {
         }
     }
 
+    
+    /** 
+     * Resizes the sim
+     * @param cols New columns
+     * @param rows New rows
+     */
     public void resize(int cols, int rows) {
         this.cols = cols;
         this.rows = rows;
@@ -51,14 +73,29 @@ public class RiverSim {
         genSim();
     }
 
+    
+    /** 
+     * Gets the current time of the simulation
+     * @return int current time
+     */
     public int getTime() {
         return timeSinceReset;
     }
 
+    
+    /** 
+     * Gets the current funds
+     * @return int current funds
+     */
     public int getFunds() {
         return funds;
     }
 
+    
+    /** 
+     * Gets the number of filled tiles that are being used
+     * @return int filled tiles
+     */
     public int getFilled() {
         filled = 0;
         for(int i = 0; i < rows; i++) {
@@ -73,10 +110,20 @@ public class RiverSim {
         return filled;
     }
 
+    
+    /** 
+     * Attaches an observer to a specific location in the model
+     * @param col Column in model
+     * @param row Row in model
+     * @param obs Observer to attach
+     */
     public void addObserver(int col, int row, PropertyChangeListener obs) {
         sim[row][col].addObserver(obs);
     }
 
+    /**
+     * Advances all tiles to the next month
+     */
     public void nextMonth() {
         timeSinceReset++;
         for(int i = 0; i < rows; i++) {
@@ -96,6 +143,13 @@ public class RiverSim {
     }
 
 
+    
+    /** 
+     * Sets a new tile at a specific location in the model
+     * @param col Column to set
+     * @param row Row to set
+     * @param selected Name of new land area
+     */
     public void setTile(int col, int row, String selected) {
         LandArea area;
         switch(selected) {
@@ -118,6 +172,13 @@ public class RiverSim {
         sim[row][col].setTile(area);
     }
 
+    
+    /** 
+     * Gets the tile at a specific location
+     * @param col Column to retrieve at
+     * @param row Row to retrieve at
+     * @return Tile Tile at specified location
+     */
     public Tile getTile(int col, int row) {
         return sim[row][col];
     }
