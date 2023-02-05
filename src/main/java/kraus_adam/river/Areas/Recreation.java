@@ -3,6 +3,7 @@ package kraus_adam.river.Areas;
 public class Recreation extends LandArea {
     /**
      * Recreation land area constructor
+     * 
      * @param created Time of creation
      */
     public Recreation(int created) {
@@ -13,9 +14,9 @@ public class Recreation extends LandArea {
         lastChanged = created;
     }
 
-    
-    /** 
+    /**
      * Calculates the change in cost/revenue for a new month
+     * 
      * @return int cost/revenue change
      */
     @Override
@@ -23,16 +24,16 @@ public class Recreation extends LandArea {
         age++;
         int month = (age + lastChanged) % 12;
         int change = 0;
-        if(month == 11) {
+        if (month == 11) {
             change = 5;
             totalRevenue += change;
         }
         return change;
     }
 
-    
-    /** 
+    /**
      * Gets the monthly money change for cost/revenue
+     * 
      * @return String Monthly money change
      */
     @Override
@@ -41,16 +42,16 @@ public class Recreation extends LandArea {
         int month = time % 12;
         int minus = 0;
         int plus = 0;
-        if(age == 0) // first month creation
+        if (age == 0) // first month creation
             minus = 10;
-        else if(month == 11)
+        else if (month == 11)
             plus = 5;
         return "-$" + minus + "k\n+$" + plus + "k";
     }
 
-    
-    /** 
+    /**
      * Gets the detailed land area information
+     * 
      * @return String Detailed information
      */
     @Override
@@ -65,9 +66,9 @@ public class Recreation extends LandArea {
         return details;
     }
 
-    
-    /** 
+    /**
      * Gets the color chosen for the Recreation land area
+     * 
      * @return String
      */
     @Override

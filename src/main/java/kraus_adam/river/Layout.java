@@ -27,6 +27,7 @@ public class Layout {
 
     /**
      * GUI Layout constructor
+     * 
      * @param model RiverSim model
      */
     public Layout(RiverSim model) {

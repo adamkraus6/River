@@ -3,6 +3,7 @@ package kraus_adam.river.Areas;
 public class Agriculture extends LandArea {
     /**
      * Agriculture land area constructor
+     * 
      * @param created Time of creation
      */
     public Agriculture(int created) {
@@ -13,9 +14,9 @@ public class Agriculture extends LandArea {
         lastChanged = created;
     }
 
-    
-    /** 
+    /**
      * Calculates the change in cost/revenue for a new month
+     * 
      * @return int cost/revenue change
      */
     @Override
@@ -23,19 +24,19 @@ public class Agriculture extends LandArea {
         age++;
         int month = (age + lastChanged) % 12;
         int change = 0;
-        if(month == 4) {
+        if (month == 4) {
             change = -50;
             totalCost -= change;
-        } else if(month == 9 && age > 3) {
+        } else if (month == 9 && age > 3) {
             change = 65;
             totalRevenue += change;
         }
         return change;
     }
 
-    
-    /** 
+    /**
      * Gets the monthly money change for cost/revenue
+     * 
      * @return String Monthly money change
      */
     @Override
@@ -44,18 +45,18 @@ public class Agriculture extends LandArea {
         int month = time % 12;
         int minus = 0;
         int plus = 0;
-        if(age == 0) // first month creation
+        if (age == 0) // first month creation
             minus = 300;
-        else if(month == 4)
+        else if (month == 4)
             minus = 50;
-        else if(month == 9 && age > 3)
+        else if (month == 9 && age > 3)
             plus = 65;
         return "-$" + minus + "k\n+$" + plus + "k";
     }
 
-    
-    /** 
+    /**
      * Gets the detailed land area information
+     * 
      * @return String Detailed information
      */
     @Override
@@ -70,9 +71,9 @@ public class Agriculture extends LandArea {
         return details;
     }
 
-    
-    /** 
+    /**
      * Gets the color chosen for the Agriculture land area
+     * 
      * @return String
      */
     @Override

@@ -17,13 +17,14 @@ public class TileView extends Button implements PropertyChangeListener {
         setTextAlignment(TextAlignment.CENTER);
     }
 
-    
-    /** 
+    /**
      * Sets the model to reference
+     * 
      * @param tile Tile in RiverSim model
      */
     public void setModel(Tile tile) {
         this.tile = tile;
+        tile.addObserver(this);
         getTile();
     }
 
@@ -37,9 +38,9 @@ public class TileView extends Button implements PropertyChangeListener {
         setStyle("-fx-background-color: " + tile.getColor());
     }
 
-    
-    /** 
+    /**
      * Gets the detailed tile information for the land area section
+     * 
      * @return String Detailed tile information
      */
     public String getTileDetails() {
@@ -47,9 +48,9 @@ public class TileView extends Button implements PropertyChangeListener {
         return name;
     }
 
-    
-    /** 
+    /**
      * Runs whenever observer is notified
+     * 
      * @param event ActionEvent
      */
     // GRADING: OBSERVE

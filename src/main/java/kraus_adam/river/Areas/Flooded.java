@@ -10,9 +10,9 @@ public class Flooded extends LandArea {
         totalRevenue = 0;
     }
 
-    
-    /** 
+    /**
      * Gets the color chosen for the Flooded land area
+     * 
      * @return String
      */
     @Override
