@@ -1,3 +1,1 @@
-# River
-
-JavaFX River Simulator for GUI (CSC 468)
+# GUI Programming (CSC468) - JavaFX - River Simulator
