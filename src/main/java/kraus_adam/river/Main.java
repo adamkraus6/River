@@ -1,10 +1,14 @@
 /**
+ * River Sim - JavaFX
+ * Adam Kraus
+ * GUI - CSC468
+ * Due: 2/16/2023
+ * 
  * Complete the following checklist. If you partially completed an item, put a note how it can be checked for what is working for partial credit.
  *
  *
  * DONE Followed the class OOP diagram
  * DONE Observer pattern (ignores tiers)
- *
  *
  * 1.	Tier: Views and animal
  * DONE a. All objects (ignoring the sim area)
@@ -16,22 +20,17 @@
  * DONE g. Radio buttons update properly
  * DONE h. Selecting a rectangle without “add” updates the land area info
  *
- *
- *
  * 2a Tier: Advanced functionality
  * DONE a. Next month button has some noticeable effect
  * DONE b. Land areas updated properly on “next”
  * DONE c. Sim info bar updated properly
  * DONE d. Selecting a tile after an update shows the new information
  *
- *
- *
  * 2b: Layout
  * DONE a. Location of all items in correct spot
  * DONE b. Layout still correct on window resize
  * DONE c. Resize grid at minimum resets the grid and info
  * DONE d. Everything still working that is listed above with resize
- *
  *
  * Final Tier: Extensions 30
  * Extension 1: 3a 10 points Hotkeys: You can press the following buttons with these hotkeys:
@@ -43,7 +42,6 @@
  *      and has a resizing menu, with the same resizing options as in the action commands area.
  * Extension 3: 2d 10 points Land Area Colors: The color of Agriculture land areas is green,
  *      Recreation is red, Flooded is light blue, and Unused is grey.
- *
  *
  * The grade you compute is the starting point for course staff, who reserve the right to change the grade if they disagree with your assessment and to deduct points for other issues they may encounter, such as errors in the submission process, naming issues, etc.
  */
